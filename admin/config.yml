@@ -1,9 +1,10 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: Samsko1237/Crazy-piano
   branch: main
 
-media_folder: "assets/uploads"
-public_folder: "/assets/uploads"
+media_folder: "photos"
+public_folder: "/photos"
 
 collections:
   - name: "pages"
