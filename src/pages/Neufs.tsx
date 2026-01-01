@@ -1,0 +1,110 @@
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import Layout from "@/components/Layout";
+
+const pianos = [
+  {
+    id: 1,
+    name: "John Milton Naturel",
+    category: "Amateur",
+    image: "/images/piano-naturel.jpg",
+  },
+  {
+    id: 2,
+    name: "John Milton 123",
+    category: "Professionnel",
+    image: "/images/piano-noir.jpg",
+  },
+];
+
+const Neufs = () => {
+  return (
+    <Layout>
+      {/* Hero */}
+      <section className="pt-32 pb-16 bg-gradient-purple">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center"
+          >
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white mb-4">
+              Pianos Neufs
+            </h1>
+            <p className="text-white/80 text-lg max-w-2xl mx-auto">
+              Découvrez tous les modèles de pianos neufs et accessoires que nous 
+              vendons actuellement chez Crazy-Piano.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Content */}
+      <section className="section-padding bg-background">
+        <div className="container mx-auto px-6">
+          {/* Images showcase */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            {pianos.map((piano, index) => (
+              <motion.div
+                key={piano.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group"
+              >
+                <div className="overflow-hidden rounded-lg bg-card border border-border shadow-card">
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={piano.image}
+                      alt={piano.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <span className="text-primary text-sm font-medium">{piano.category}</span>
+                    <h3 className="font-display text-xl text-foreground mt-1">{piano.name}</h3>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="flex items-center justify-center"
+            >
+              <div className="text-center p-8">
+                <p className="text-6xl mb-4">🎼</p>
+                <p className="text-muted-foreground">Et bien d'autres modèles à découvrir en showroom</p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Description */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <p className="text-lg text-foreground mb-6">
+              <strong>Pianos droits</strong> (professionnel, amateur, débutant), 
+              <strong> accessoires</strong> et <strong>métronomes</strong>, vous 
+              trouverez tout ce dont vous avez besoin chez Crazy-Piano.
+            </p>
+            <p className="text-muted-foreground mb-8">
+              Si vous souhaitez en savoir plus sur Crazy-Piano, n'hésitez pas à nous contacter !
+            </p>
+            <Link to="/contact" className="btn-purple rounded-lg inline-block">
+              Nous contacter
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+    </Layout>
+  );
+};
+
+export default Neufs;

@@ -1,0 +1,72 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+
+media_folder: public/images # Media files will be stored in the repo under public/images
+public_folder: /images # The src attribute for uploaded media will begin with /images
+
+collections:
+  - name: "pages" # Used in routes, e.g., /admin/collections/pages
+    label: "Pages" # Used in the UI
+    folder: "content/pages" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Titre", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - {label: "Contenu", name: "body", widget: "markdown"}
+      - {label: "Image principale", name: "image", widget: "image", required: false}
+      - {label: "Date de publication", name: "date", widget: "datetime", required: false}
+
+  - name: "accueil" # Page d'accueil
+    label: "Page d'accueil"
+    files:
+      - label: "Hero Section"
+        name: "hero"
+        file: "content/accueil/hero.md"
+        fields:
+          - {label: "Titre principal", name: "title", widget: "string"}
+          - {label: "Sous-titre", name: "subtitle", widget: "text"}
+          - {label: "Image hero", name: "image", widget: "image"}
+          - {label: "Texte du bouton", name: "buttonText", widget: "string", required: false}
+          - {label: "Lien du bouton", name: "buttonLink", widget: "string", required: false}
+
+  - name: "services"
+    label: "Services"
+    folder: "content/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Titre", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Contenu", name: "body", widget: "markdown"}
+      - {label: "Image", name: "image", widget: "image", required: false}
+      - {label: "Icône", name: "icon", widget: "string", required: false}
+
+  - name: "pianos"
+    label: "Pianos"
+    folder: "content/pianos"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Titre", name: "title", widget: "string"}
+      - {label: "Marque", name: "brand", widget: "string"}
+      - {label: "Modèle", name: "model", widget: "string", required: false}
+      - {label: "Prix", name: "price", widget: "number", required: false}
+      - {label: "Description", name: "description", widget: "markdown"}
+      - {label: "Images", name: "images", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
+      - {label: "État", name: "condition", widget: "select", options: ["Neuf", "Occasion", "Restauration"], default: "Occasion"}
+      - {label: "Disponible", name: "available", widget: "boolean", default: true}
+
+  - name: "actualites"
+    label: "Actualités"
+    folder: "content/actualites"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Titre", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Auteur", name: "author", widget: "string", required: false}
+      - {label: "Image", name: "image", widget: "image", required: false}
+      - {label: "Contenu", name: "body", widget: "markdown"}
+
