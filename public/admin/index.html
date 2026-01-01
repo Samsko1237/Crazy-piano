@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Manager</title>
+  <title>Content Manager - Crazy Piano</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
@@ -11,11 +11,42 @@
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
     if (window.netlifyIdentity) {
+      // Handle invite tokens and email confirmation
+      const hash = window.location.hash;
+      
       window.netlifyIdentity.on("init", user => {
         if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
+          // Check if there's an invite token or confirmation token
+          if (hash.includes('invite_token') || hash.includes('confirmation_token')) {
+            // Open the signup modal to complete registration
+            window.netlifyIdentity.open("signup");
+          } else {
+            // Normal login flow
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        } else {
+          // User is logged in, remove hash from URL
+          if (hash) {
+            window.history.replaceState(null, null, window.location.pathname);
+          }
+        }
+      });
+      
+      // Handle successful signup/confirmation
+      window.netlifyIdentity.on("signup", user => {
+        if (user) {
+          window.netlifyIdentity.close();
+          window.location.reload();
+        }
+      });
+      
+      // Handle login
+      window.netlifyIdentity.on("login", user => {
+        if (user) {
+          window.netlifyIdentity.close();
+          window.location.reload();
         }
       });
     }
