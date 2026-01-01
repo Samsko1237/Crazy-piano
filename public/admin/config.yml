@@ -2,6 +2,9 @@ backend:
   name: git-gateway
   branch: main
 
+# IMPORTANT: Pour Netlify, git-gateway est correct
+# Assurez-vous que Netlify Identity et Git Gateway sont activés dans votre dashboard Netlify
+
 media_folder: public/images
 public_folder: /images
 
