@@ -1,15 +1,17 @@
 ---
-title: "À propos de Crazy-Piano"
+title: "Un espace de 1.000 m² dédié au piano"
 body: |
-  ## Votre Spécialiste du Piano depuis 1986
-  
-  Crazy-Piano est votre référence pour tout ce qui concerne le piano à Bruxelles. Avec plus de 30 ans d'expérience, nous vous proposons :
-  
-  - Un showroom de 600m² avec une large sélection
-  - Un atelier de 400m² pour la restauration
-  - Une équipe d'experts passionnés
-  - Des services complets de la vente à l'entretien
-  
-  Que vous cherchiez un piano neuf, d'occasion, ou que vous ayez besoin de services de restauration ou d'accordage, nous sommes là pour vous accompagner.
-image: ""
+  Située à **Bruxelles**, Crazy-Piano c'est tout l'univers du piano qui vous est offert pour le plaisir de vos yeux et de vos oreilles dans un espace exceptionnel.
 
+  C'est dans son atelier de 400m² que Crazy-Piano chouchoute les pianos pour leur permettre de toujours donner le meilleur d'eux-mêmes pour votre plaisir à vous musicien mais aussi à vous spectateur qui appréciez le son agréable et mélodieux que dégage ce merveilleux instrument.
+showroomSize: 600
+atelierSize: 400
+images:
+  - image: "/images/showroom-main.jpg"
+    caption: "Showroom principal"
+  - image: "/images/showroom-2.jpg"
+    caption: "Collection de pianos"
+  - image: "/images/showroom-3.jpg"
+    caption: "Espace d'exposition"
+  - image: "/images/showroom-4.jpg"
+    caption: "Sélection de pianos"

@@ -18,9 +18,24 @@ collections:
         fields:
           - {label: "Titre principal", name: "title", widget: "string"}
           - {label: "Sous-titre", name: "subtitle", widget: "text"}
+          - {label: "Description", name: "description", widget: "text"}
           - {label: "Image hero", name: "image", widget: "image"}
-          - {label: "Texte du bouton", name: "buttonText", widget: "string", required: false}
-          - {label: "Lien du bouton", name: "buttonLink", widget: "string", required: false}
+          - {label: "Texte du bouton principal", name: "buttonText", widget: "string", required: false}
+          - {label: "Lien du bouton principal", name: "buttonLink", widget: "string", required: false}
+          - {label: "Texte du bouton secondaire", name: "buttonText2", widget: "string", required: false}
+          - {label: "Lien du bouton secondaire", name: "buttonLink2", widget: "string", required: false}
+      - label: "Section À propos"
+        name: "about"
+        file: "content/accueil/about.md"
+        fields:
+          - {label: "Titre", name: "title", widget: "string"}
+          - {label: "Contenu principal", name: "body", widget: "markdown"}
+          - {label: "Showroom (m²)", name: "showroomSize", widget: "number", required: false}
+          - {label: "Atelier (m²)", name: "atelierSize", widget: "number", required: false}
+          - {label: "Images", name: "images", widget: "list", fields: [
+              {label: "Image", name: "image", widget: "image"},
+              {label: "Légende", name: "caption", widget: "string", required: false}
+            ]}
       - label: "Section Services"
         name: "services"
         file: "content/accueil/services.md"
@@ -32,13 +47,6 @@ collections:
               {label: "Description", name: "description", widget: "text"},
               {label: "Icône", name: "icon", widget: "string", required: false}
             ]}
-      - label: "Section À propos"
-        name: "about"
-        file: "content/accueil/about.md"
-        fields:
-          - {label: "Titre", name: "title", widget: "string"}
-          - {label: "Contenu", name: "body", widget: "markdown"}
-          - {label: "Image", name: "image", widget: "image", required: false}
 
   - name: "services"
     label: "Services"
@@ -56,8 +64,60 @@ collections:
               {label: "Icône", name: "icon", widget: "string", required: false}
             ]}
 
+  - name: "neufs"
+    label: "Page Pianos Neufs"
+    files:
+      - label: "Page Neufs"
+        name: "neufs-page"
+        file: "content/neufs/page.md"
+        fields:
+          - {label: "Titre principal", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "text"}
+          - {label: "Contenu introductif", name: "intro", widget: "markdown", required: false}
+    folder: "content/neufs/pianos"
+    label_singular: "Piano Neuf"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Nom", name: "name", widget: "string"}
+      - {label: "Catégorie", name: "category", widget: "string", required: false}
+      - {label: "Marque", name: "brand", widget: "string"}
+      - {label: "Modèle", name: "model", widget: "string", required: false}
+      - {label: "Prix", name: "price", widget: "number", required: false}
+      - {label: "Description", name: "description", widget: "markdown"}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Type", name: "type", widget: "select", options: ["Droit", "Queue", "Électronique"], required: false}
+      - {label: "Disponible", name: "available", widget: "boolean", default: true}
+
+  - name: "occasion"
+    label: "Page Pianos d'Occasion"
+    files:
+      - label: "Page Occasion"
+        name: "occasion-page"
+        file: "content/occasion/page.md"
+        fields:
+          - {label: "Titre principal", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "text"}
+          - {label: "Contenu introductif", name: "intro", widget: "markdown", required: false}
+    folder: "content/occasion/pianos"
+    label_singular: "Piano d'Occasion"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Nom", name: "name", widget: "string"}
+      - {label: "Catégorie", name: "category", widget: "string", required: false}
+      - {label: "Marque", name: "brand", widget: "string"}
+      - {label: "Modèle", name: "model", widget: "string", required: false}
+      - {label: "Prix", name: "price", widget: "number", required: false}
+      - {label: "Description", name: "description", widget: "markdown"}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Année", name: "year", widget: "number", required: false}
+      - {label: "Type", name: "type", widget: "select", options: ["Droit", "Queue", "Électronique"], required: false}
+      - {label: "État", name: "condition", widget: "select", options: ["Excellent", "Très bon", "Bon", "À restaurer"], required: false}
+      - {label: "Disponible", name: "available", widget: "boolean", default: true}
+
   - name: "pianos"
-    label: "Pianos"
+    label: "Tous les Pianos (Général)"
     folder: "content/pianos"
     create: true
     slug: "{{slug}}"
@@ -83,7 +143,10 @@ collections:
           - {label: "Titre", name: "title", widget: "string"}
           - {label: "Description", name: "description", widget: "text"}
           - {label: "Contenu", name: "body", widget: "markdown"}
-          - {label: "Images", name: "images", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
+          - {label: "Images de restauration", name: "images", widget: "list", fields: [
+              {label: "Image", name: "image", widget: "image"},
+              {label: "Légende", name: "caption", widget: "string", required: false}
+            ]}
           - {label: "Services de restauration", name: "services", widget: "list", fields: [
               {label: "Titre", name: "title", widget: "string"},
               {label: "Description", name: "description", widget: "text"},
