@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <title>Test Config</title>
+</head>
+<body>
+  <h1>Test de chargement du config.yml</h1>
+  <p>Si vous voyez cette page, le fichier est accessible.</p>
+  <p><a href="/admin/config.yml">Lien vers config.yml</a></p>
+  <script>
+    fetch('/admin/config.yml')
+      .then(response => {
+        if (response.ok) {
+          return response.text();
+        }
+        throw new Error('Fichier non trouvé');
+      })
+      .then(text => {
+        document.body.innerHTML += '<pre>' + text + '</pre>';
+      })
+      .catch(error => {
+        document.body.innerHTML += '<p style="color: red;">Erreur: ' + error.message + '</p>';
+      });
+  </script>
+</body>
+</html>
+
+

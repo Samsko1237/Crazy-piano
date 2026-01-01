@@ -63,3 +63,4 @@ Pour tester le CMS en local (avec authentification simulée) :
 - [Decap CMS Documentation](https://decapcms.org/docs/)
 - [Netlify Identity](https://docs.netlify.com/visitor-access/identity/)
 
+

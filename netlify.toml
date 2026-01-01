@@ -9,6 +9,13 @@
   to = "/admin/index.html"
   status = 200
 
+# Ensure config.yml is accessible
+[[redirects]]
+  from = "/admin/config.yml"
+  to = "/admin/config.yml"
+  status = 200
+  force = true
+
 # Headers for admin
 [[headers]]
   for = "/admin/*"
